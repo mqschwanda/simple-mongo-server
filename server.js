@@ -11,10 +11,8 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
   if (err) return console.log(err)
   db = client.db('simple-mongo-server') // connect to database
 
-  if (db.collection('tasks').find().count() < 3) {
-    const tasks = [{label: 'example 1'}, {label: 'example 2'}, {label: 'example 3'}]
-    tasks.forEach(task => db.collection('tasks').insert(task))
-  }
+  const tasks = [{label: 'example 1'}, {label: 'example 2'}, {label: 'example 3'}]
+  tasks.forEach(task => db.collection('tasks').insert(task))
 
   app.listen(3000, () => {
     console.log('listening on 3000')
